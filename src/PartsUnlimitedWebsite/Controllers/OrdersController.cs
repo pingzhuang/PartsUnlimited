@@ -13,7 +13,8 @@ namespace PartsUnlimited.Controllers
     [Authorize]
     public class OrdersController : Controller
     {
-        private readonly IOrdersQuery _ordersQuery;
+ //my awesome feature goes here      
+ private readonly IOrdersQuery _ordersQuery;
         private readonly ITelemetryProvider _telemetry;
 		private readonly IShippingTaxCalculator _shippingTaxCalc;
 
