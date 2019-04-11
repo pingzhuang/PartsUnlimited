@@ -11,11 +11,13 @@ namespace PartsUnlimited.Controllers
         public SearchController(IProductSearch search)
         {
             this.search = search;
+
         }
 
         [HttpGet]
         public async Task<ActionResult> Index(string q)
         {
+            //changing serach order
             var result = await search.Search(q);
 
             return View(result);
