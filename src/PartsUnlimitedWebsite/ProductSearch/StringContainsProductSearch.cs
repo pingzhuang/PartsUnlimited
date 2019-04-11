@@ -21,9 +21,12 @@ namespace PartsUnlimited.ProductSearch
         {
 			try
 			{
-				var cleanQuery = Depluralize(query);
+				var cleanQuery = query;
+				
+				var q = _context.Products
+					.Where(p => p.Title.ToLower().Contains(cleanQuery));
 
-				return await cleanQuery.ToListAsync();
+				return await q.ToListAsync();
 			}
 			catch
 			{
@@ -31,21 +34,5 @@ namespace PartsUnlimited.ProductSearch
 			}
         }
 
-		public string Depluralize(string query)
-		{
-			if (query.EndsWith("ies"))
-			{
-				query = query.Substring(0, query.Length - 3) + "y";
-			}
-			else if (query.EndsWith("es"))
-			{
-				query = query.Substring(0, query.Length - 1);
-			}
-			else if (query.EndsWith("s"))
-			{
-				query = query.Substring(1, query.Length);
-			}
-			return query.ToLowerInvariant();
-		}
 	}
 }
