@@ -28,7 +28,7 @@ namespace PartsUnlimited.Controllers
 
             var recommendedProductIds = await recommendation.GetRecommendationsAsync(productId);
 
-            var recommendedProducts = await db.Products.Where(x => recommendedProductIds.Contains(x.ProductId.ToString())).ToListAsync();
+           
 
             return PartialView("_Recommendations", recommendedProducts);
         }

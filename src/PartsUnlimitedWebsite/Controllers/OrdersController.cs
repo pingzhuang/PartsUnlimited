@@ -28,8 +28,7 @@ namespace PartsUnlimited.Controllers
         public async Task<ActionResult> Index(DateTime? start, DateTime? end, string invalidOrderSearch)
         {
             var username = User.Identity.GetUserName();
-
-            return View(await _ordersQuery.IndexHelperAsync(username, start, end, invalidOrderSearch, false));
+                     return View(await _ordersQuery.IndexHelperAsync(username, start, end, invalidOrderSearch, false));
         }
 
         public async Task<ActionResult> Details(int? id)
@@ -42,6 +41,7 @@ namespace PartsUnlimited.Controllers
 
             var order = await _ordersQuery.FindOrderAsync(id.Value);
             var username = User.Identity.GetUserName();
+
 
             // If the username isn't the same as the logged in user, return as if the order does not exist
             if (order == null || !String.Equals(order.Username, username, StringComparison.Ordinal))
